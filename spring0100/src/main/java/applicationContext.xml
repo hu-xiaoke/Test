@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- hello -->
+	<bean id="helloBean" class="com.hubk.testHello.HelloWord">
+		<property name="name" value="spring" />
+	</bean>
+	<!-- 自动装配之：Auto-Wiring ‘no’,默认的模式，需要通过 'ref' 属性来连接 bean -->
+	<!-- <bean id="customer" class="com.hubk.studyAutowire.Customer">
+		<property name="person" ref="person"></property>
+	</bean>
+	<bean id="person" class="com.hubk.studyAutowire.Person">
+		<property name="name" value="hubk" />
+		<property name="address" value="昆明" />
+		<property name="age" value="25" />
+	</bean> -->
+	<!-- 
+		自动装配之：autowire="byType",如果一个bean的数据类型与其它bean属性的数据类型相同，将自动兼容装配它
+		注：在类型的自动装配模式，就必须确保装配Bean 只有一个唯一的数据类型声明。 
+	-->
+	<bean id="customer" class="com.hubk.studyAutowire.Customer" autowire="byType">
+	</bean>
+	<bean id="person" class="com.hubk.studyAutowire.Person">
+		<property name="name" value="hubk" />
+		<property name="address" value="昆明" />
+		<property name="age" value="25" />
+	</bean>
+	<!-- 
+		自动装配之：autowire="byName",一个bean的名称与其他bean属性的名称是一样的，那么将自动装配它
+		注：<bean id="person"...  的id对应装载Bean中的属性名称
+	-->
+	<!-- <bean id="customer" class="com.hubk.studyAutowire.Customer" autowire="byName">
+	</bean>
+	<bean id="person" class="com.hubk.studyAutowire.Person">
+		<property name="name" value="hubk" />
+		<property name="address" value="昆明" />
+		<property name="age" value="25" />
+	</bean> -->
+	<!-- 
+		自动装配之：通过构造自动装配,实际上是按构造函数的参数类型自动装配
+	-->
+	<!-- <bean id="customer" class="com.hubk.studyAutowire.Customer">
+		<constructor-arg ref="person"></constructor-arg>
+	</bean>
+	<bean id="person" class="com.hubk.studyAutowire.Person">
+		<property name="name" value="hubk" />
+		<property name="address" value="昆明" />
+		<property name="age" value="25" />
+	</bean> -->
+	
+</beans>
